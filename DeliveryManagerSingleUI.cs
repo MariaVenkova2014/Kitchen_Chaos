@@ -1,8 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-//Blank space
-//Blank space
 
 public class DeliveryManagerSingleUI : MonoBehaviour {
 

@@ -1,12 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-//Blank space
-//Blank space
 
 public class DeliveryManagerUI : MonoBehaviour {
 
 
     [SerializeField] private Transform container;
     [SerializeField] private Transform recipeTemplate;
+
 
     private void Awake() {
         recipeTemplate.gameObject.SetActive(false);
@@ -23,7 +24,7 @@ public class DeliveryManagerUI : MonoBehaviour {
         UpdateVisual();
     }
 
-    private void DeliveryManager_OnRecipeSpawned(object sender, System.EventArgs e) { 
+    private void DeliveryManager_OnRecipeSpawned(object sender, System.EventArgs e) {
         UpdateVisual();
     }
 
