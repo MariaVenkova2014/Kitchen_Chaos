@@ -5,11 +5,14 @@ using UnityEngine;
 public class KitchenGameManager : MonoBehaviour {
 
 
+    public static KitchenGameManager Instance { get; private set; }
+
+
     private enum State {
         WaitingToStart,
         CountdownToStart,
         GamePlaying,
-        GameOver,
+        GameOver
     }
 
 
@@ -20,6 +23,8 @@ public class KitchenGameManager : MonoBehaviour {
 
 
     private void Awake() {
+        Instance = this;
+
         state = State.WaitingToStart;
     }
 
@@ -33,13 +38,13 @@ public class KitchenGameManager : MonoBehaviour {
                 break;
             case State.CountdownToStart:
                 countdownToStartTimer -= Time.deltaTime;
-                if (waitingToStartTimer < 0f) {
+                if (countdownToStartTimer < 0f) {
                     state = State.GamePlaying;
                 }
                 break;
             case State.GamePlaying:
                 gamePlayingTimer -= Time.deltaTime;
-                if (waitingToStartTimer < 0f) {
+                if (gamePlayingTimer < 0f) {
                     state = State.GameOver;
                 }
                 break;
@@ -47,6 +52,10 @@ public class KitchenGameManager : MonoBehaviour {
                 break;
         }
         Debug.Log(state);
+    }
+
+    public bool IsGamePlaying() {
+        return state == State.GamePlaying;
     }
 
 }
